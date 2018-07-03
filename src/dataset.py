@@ -35,7 +35,7 @@ class Dataset(object):
             for line in f:
                 line_count += 1
                 print('line1:', line)
-                line = line.strip().lower().split('__label__')[0].strip().split(' ') # add .lower().split('__label__')[0].strip()
+                line = line.strip().split(' ')
                 print('line2:', line)
                 if len(line) == 0 or len(line[0]) == 0 or '-DOCSTART-' in line[0]:
                     if len(new_token_sequence) > 0:

@@ -150,7 +150,7 @@ def conll_to_brat(conll_input_filepath, conll_output_filepath, brat_original_fol
     entities = []
     entity = {}
     for line in conll_file:
-        line = line.strip().split(' ')
+        line = line.strip().lower().split('__label__')[0].strip().split(' ') # TODO add .lower().split('__label__')[0].strip()
         # New sentence
         if len(line) == 0 or len(line[0]) == 0 or '-DOCSTART-' in line[0]:
             # Add the last entity 
