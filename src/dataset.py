@@ -33,7 +33,9 @@ class Dataset(object):
             f = codecs.open(dataset_filepath, 'r', 'UTF-8')
             for line in f:
                 line_count += 1
-                line = line.strip().split('__label__')[0].strip().split(' ')
+                print('line1:', line)
+                line = line.strip().lower().split('__label__')[0].strip().split(' ') # add .lower().split('__label__')[0].strip()
+                print('line2:', line)
                 if len(line) == 0 or len(line[0]) == 0 or '-DOCSTART-' in line[0]:
                     if len(new_token_sequence) > 0:
                         labels.append(new_label_sequence)
