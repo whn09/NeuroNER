@@ -143,9 +143,10 @@ class NeuroNER(object):
     
             # Conll file exists
             if os.path.isfile(dataset_filepaths[dataset_type]) and os.path.getsize(dataset_filepaths[dataset_type]) > 0:
+                print('Conll file exists')
                 # Brat text files exist
                 if os.path.exists(dataset_brat_folders[dataset_type]) and len(glob.glob(os.path.join(dataset_brat_folders[dataset_type], '*.txt'))) > 0:
-    
+                    print('Brat text files exist')
                     # Check compatibility between conll and brat files
                     brat_to_conll.check_brat_annotation_and_text_compatibility(dataset_brat_folders[dataset_type])
                     if os.path.exists(dataset_compatible_with_brat_filepath):
@@ -154,15 +155,17 @@ class NeuroNER(object):
     
                 # Brat text files do not exist
                 else:
-    
+                    print('Brat text files do not exist')
                     # Populate brat text and annotation files based on conll file
                     conll_to_brat.conll_to_brat(dataset_filepaths[dataset_type], dataset_compatible_with_brat_filepath, dataset_brat_folders[dataset_type], dataset_brat_folders[dataset_type])
                     dataset_filepaths[dataset_type] = dataset_compatible_with_brat_filepath
     
             # Conll file does not exist
             else:
+                print('Conll file does not exist')
                 # Brat text files exist
                 if os.path.exists(dataset_brat_folders[dataset_type]) and len(glob.glob(os.path.join(dataset_brat_folders[dataset_type], '*.txt'))) > 0:
+                    print('Brat text files exist')
                     dataset_filepath_for_tokenizer = os.path.join(parameters['dataset_text_folder'], '{0}_{1}.txt'.format(dataset_type, parameters['tokenizer']))
                     if os.path.exists(dataset_filepath_for_tokenizer):
                         conll_to_brat.check_compatibility_between_conll_and_brat_text(dataset_filepath_for_tokenizer, dataset_brat_folders[dataset_type])
@@ -173,12 +176,14 @@ class NeuroNER(object):
     
                 # Brat text files do not exist
                 else:
+                    print('Brat text files do not exist')
                     del dataset_filepaths[dataset_type]
                     del dataset_brat_folders[dataset_type]
                     continue
     
             if parameters['tagging_format'] == 'bioes':
                 # Generate conll file with BIOES format
+                print('Generate conll file with BIOES format')
                 bioes_filepath = os.path.join(parameters['dataset_text_folder'], '{0}_bioes.txt'.format(utils.get_basename_without_extension(dataset_filepaths[dataset_type])))
                 utils_nlp.convert_conll_from_bio_to_bioes(dataset_filepaths[dataset_type], bioes_filepath)
                 dataset_filepaths[dataset_type] = bioes_filepath
