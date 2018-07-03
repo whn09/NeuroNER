@@ -258,7 +258,7 @@ class NeuroNER(object):
         dataset_filepaths, dataset_brat_folders = self._get_valid_dataset_filepaths(parameters)
         print('dataset_filepaths:', len(dataset_filepaths))
         for dataset_filepath in dataset_filepaths:
-            print(dataset_filepath, ':', dataset_filepath)
+            print(dataset_filepath, ':', dataset_filepaths.get(dataset_filepath, None))
         self._check_parameter_compatiblity(parameters, dataset_filepaths)
 
         # Load dataset

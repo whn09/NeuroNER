@@ -30,6 +30,7 @@ class Dataset(object):
         new_token_sequence = []
         new_label_sequence = []
         if dataset_filepath:
+            print('dataset_filepath:', dataset_filepath)
             f = codecs.open(dataset_filepath, 'r', 'UTF-8')
             for line in f:
                 line_count += 1
