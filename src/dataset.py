@@ -58,6 +58,7 @@ class Dataset(object):
                 labels.append(new_label_sequence)
                 tokens.append(new_token_sequence)
             f.close()
+        print('labels:', len(labels), 'tokens:', len(tokens), 'token_count:', token_count, 'label_count:', label_count, 'character_count:', character_count)
         return labels, tokens, token_count, label_count, character_count
 
 
