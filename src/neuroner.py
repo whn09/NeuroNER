@@ -140,7 +140,8 @@ class NeuroNER(object):
             dataset_filepaths[dataset_type] = os.path.join(parameters['dataset_text_folder'], '{0}.txt'.format(dataset_type))
             dataset_brat_folders[dataset_type] = os.path.join(parameters['dataset_text_folder'], dataset_type)
             dataset_compatible_with_brat_filepath = os.path.join(parameters['dataset_text_folder'], '{0}_compatible_with_brat.txt'.format(dataset_type))
-    
+
+            print('dataset_type:', dataset_type)
             # Conll file exists
             if os.path.isfile(dataset_filepaths[dataset_type]) and os.path.getsize(dataset_filepaths[dataset_type]) > 0:
                 print('Conll file exists')
@@ -168,9 +169,11 @@ class NeuroNER(object):
                     print('Brat text files exist')
                     dataset_filepath_for_tokenizer = os.path.join(parameters['dataset_text_folder'], '{0}_{1}.txt'.format(dataset_type, parameters['tokenizer']))
                     if os.path.exists(dataset_filepath_for_tokenizer):
+                        print('dataset_filepath_for_tokenizer exist')
                         conll_to_brat.check_compatibility_between_conll_and_brat_text(dataset_filepath_for_tokenizer, dataset_brat_folders[dataset_type])
                     else:
                         # Populate conll file based on brat files
+                        print('dataset_filepath_for_tokenizer does not exist')
                         brat_to_conll.brat_to_conll(dataset_brat_folders[dataset_type], dataset_filepath_for_tokenizer, parameters['tokenizer'], parameters['spacylanguage'])
                     dataset_filepaths[dataset_type] = dataset_filepath_for_tokenizer
     
