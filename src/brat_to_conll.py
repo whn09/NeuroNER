@@ -71,7 +71,7 @@ def get_entities_from_brat(text_filepath, annotation_filepath, verbose=False):
     with codecs.open(text_filepath, 'r', 'UTF-8') as f:
         text =f.read()
         # TODO for funny
-        text = text.strip().lower().split('__label__')[0].strip()
+        text = text.strip().split('__label__')[0].strip()
     if verbose: print("\ntext:\n{0}\n".format(text))
 
     # parse annotation file
