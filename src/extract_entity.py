@@ -1,5 +1,5 @@
 DIR = '../output/funny_all_2018-07-04_02-29-17-58097/'
-FILENAME = dir+'000_deploy.txt'
+FILENAME = DIR+'000_deploy.txt'
 SEP = ' '
 
 
