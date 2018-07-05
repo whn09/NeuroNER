@@ -1,4 +1,4 @@
-DIR = '../output/funny_all_2018-07-04_02-29-17-58097/'
+DIR = '../output/funny_all_2018-07-04_07-02-22-24658/'
 FILENAME = DIR+'000_deploy.txt'
 SEP = ' '
 
